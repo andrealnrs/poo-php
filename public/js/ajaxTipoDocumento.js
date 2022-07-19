@@ -1,39 +1,39 @@
-document.getElementById('aggDocumento').addEventListener('click', TipoDeDocumento);
+document.getElementById("aggDocumento").addEventListener("click", llamadoAjax);
 
-function TipoDeDocumento() {
- 
-  if (window.XMLHttpRequest) { 
+//funcion que se ejecuta cuando se hace click
+function llamadoAjax() {
+    //definir el objeto ajax
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
         http_request = new XMLHttpRequest();
-        //http_request.overrideMimeType('text/xml');
-      } else if (window.ActiveXObject) { 
+    } else if (window.ActiveXObject) { // IE
         http_request = new ActiveXObject("Microsoft.XMLHTTP");
-    };
+    } 
 
+    //http_request.overrideMimeType('text/xml');
+
+    //definir funcion de respuesta del servidor
     http_request.onreadystatechange = function(){
         // procesar la respuesta
-        if (http_request.readyState == 4) {
-            if (http_request.status == 200) {
-                // perfect!
-             document.getElementById('respuesta').innerHTML = alert('si');
+        if (http_request.status == 200) {
+            document.getElementById("resultado").innerHTML = http_request.responseText;
+            //refrescarTabla();
+            // perfect!
+        } else {
+            // hubo algún problema con la petición,
+            // por ejemplo código de respuesta 404 (Archivo no encontrado)
+            // o 500 (Internal Server Error)
+            document.getElementById("resultado").innerHTML = "Algo salio mal!";
+        }                        
 
-            } else {
-                // hubo algún problema con la petición,
-                // por ejemplo código de respuesta 404 (Archivo no encontrado)
-                // o 500 (Internal Server Error)
-                
-              document.getElementById('respuesta').innerHTML = alert('no') ;
-            }
-     }  
     };
 
-    //var form = document.querySelector();
-    //var data = new FormData(form);
-
+    //enviar variables al servidor
+    var form = document.querySelector('form');
+    var data = new FormData(form);
     //Prueba con variables separadas
     //var data2 = `numeroA=${document.querySelector('input[name="numeroA"]').value}&numeroB=${document.querySelector('input[name="numeroB"]').value}&operacion=${document.querySelector('select[name="operacion"]').value}`;
-   
-    
+    //console.log(data2);
     //crear la peticion
-    http_request.open('POST', 'http://localhots:3306/C:/xampp/htdocs/poo/public/index.php', true);
-    http_request.send();
+    http_request.open("POST", 'http://localhost/src/controller/Controlador.php', true);
+    http_request.send(data);
 }

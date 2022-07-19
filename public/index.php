@@ -8,29 +8,34 @@
     <title>formulario</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
     
 
 </head>
 
 <body>
     
-    <form>
+    <form action='../src/controller/Controlador.php' method="POST">
         <div class="card my-3 mx-3">
             <div class='card-header text-danger'>
               TIPO DE DOCUMENTO
             </div>
             <div class='card-body'>
                 <div class="col-auto">
-                    <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>
+                    <input type="hidden" name="idDocumento">
                 </div>
                 <div class="col-4">
+                    <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>
                     <input type="text" class="form-control" id="formGroupExampleInput2"
-                    placeholder="inserte tipo de documento" name="tipoDocuemnto">
+                    placeholder="inserte tipo de documento" name="nombreDocumento">
                 </div>
                 <div class="col-auto my-3">
-                    <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+                    <button type="button" class="btn btn-primary mb-3" id="aggDocumento">Guardar</button>
                 </div>
+
+                <div class="alert alert-primary mx-2 my-2" id='resultado' role="alert">
+                    
+                </div>
+    
             </div>
             
         </div>
@@ -47,13 +52,13 @@
             <div class="row">
                 <div class="my-3 mx-3 col">
                  <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>
-                    <select class="form-select" id="autoSizingSelect" name="nombreDocumento">
+                    <!--<select class="form-select" id="autoSizingSelect" name="nombreDocumento">
                         <option selected>seleccionar</option>
                         <option value="1">cedula de ciudadania</option>
                         <option value="2">cedula de extranjeria</option>
                         <option value="3">tarjeta de identidad</option>
                         <option value="4">pasaporte</option>
-                    </select>
+                    </select>-->
                 </div>
                 <div class="my-3 mx-3 col">
                     <label for="formGroupExampleInput2" class="form-label">Número de documento</label>
@@ -117,9 +122,7 @@
   </div>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src='./js/ajaxRegistro.js'></script>
-    <script src='./js/ajaxTipoDocumento.js'></script>
+   <script src="./js/ajaxTipoDocumento.js"></script>
 </body>
 
 </html>

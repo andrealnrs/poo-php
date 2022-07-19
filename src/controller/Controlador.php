@@ -1,0 +1,13 @@
+<?php
+declare(strict_types=1);
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once ('../model/DocumentoRepositorio.php');
+include_once('../model/TipoDocumento.php')
+
+$doc = new TipoDocumento($_POST 'nombreDocumento'); //pasa los parametros que vas a solicitar solamente
+$DocumentoRepositorio = new DocumentoRepositorio($doc);
+$guardarBD= $DocumentoRepositorio->guardar($doc);

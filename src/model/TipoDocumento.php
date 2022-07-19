@@ -1,7 +1,8 @@
 <?php
+declare(strict_types=1);
 
 class TipoDocumento {
-    public $id = integer;
+    public $id_documento = integer;
     public $nombre_documento = string;
 
     function __construc($_POST)

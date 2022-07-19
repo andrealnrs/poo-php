@@ -1,20 +1,33 @@
 <?php
+declare(strict_types=1);
 
-include_once('db.php')
+include_once('Conexion.php')
+include_once('TipoDocumento.php')
+ 
+class DocumentoRepositorio{
+    private $bd;
+    private $doc;
+    function __construct($doc=null) 
+    {
+        $this->bd   = Conexion::obtener();
+        $this->doc = $doc;
+    }  
 
-
-$documento = new Documento($_POST);
-$db = conn();
-
-try{
-    $sql = "INSERT INTO formulario.documentos (nombre_documento) 
-            VALUES (:nombreDocumento)";
-    //por tema de seguridad en valores pone ese :numero        
-    $sentencia = $this->bd->prepare($sql);
-    $sentencia->bindParam(':nombreDocumento', $calc->nombreDocumento);
-    $guardo =  $sentencia->rowCount();
-    return  $guardo; 
-} catch (Exception $e){
-    echo '<pre>'.print_r($e,true) .'</pre>';
-    return  $guardo; 
-}
+    function guardar($doc)
+    {
+        $guardo = false;
+        try{
+            $sql = "INSERT INTO formulario.doc (nombre_documento) 
+                    VALUES (':nombreDocumento')";
+            $sentencia = $this->bd->prepare($sql);
+            //$sentencia->bindParam(':idDocumento', $doc->id_documento);
+            $sentencia->bindParam(':nombreDocumento', $doc->nombre_documento);   
+            $sentencia->execute();   
+            $guardo =  $sentencia->rowCount();
+            return  $guardo;   
+        }catch(Exception $e){
+            echo '<pre>'.print_r($e,true) .'</pre>';
+            return  $guardo; 
+            //die();            
+        }
+    }
