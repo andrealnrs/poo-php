@@ -14,25 +14,40 @@
 </head>
 
 <body>
+    
+    <form>
+        <div class="card my-3 mx-3">
+            <div class='card-header text-danger'>
+              TIPO DE DOCUMENTO
+            </div>
+            <div class='card-body'>
+                <div class="col-auto">
+                    <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                    placeholder="inserte tipo de documento" name="tipoDocuemnto">
+                </div>
+                <div class="col-auto my-3">
+                    <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+
+
+    <!--tabla de formulario para usuarios-->
     <form action="../src/model/resgistro.php" method="POST">
      <div class="card my-4 mx-4">
         <div class="card-header text-primary">
             FORMULARIO
         </div>
-        <div class="card-body">
-            <div class='row'>
-                <div class="my-3 mx-3 col-5">
-                    <label for="formGroupExampleInput2" class="form-label">Agregar tipo de documento</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2"
-                    placeholder="agregue nuevo tipo de documento" name="nombre_documento">
-                    <button type="button" id='aggDocumento' class="btn btn-primary">Agregar</button>
-                </div>
-            </div>
-            
+        <div class="card-body"> 
             <div class="row">
                 <div class="my-3 mx-3 col">
                  <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>
-                    <select class="form-select" id="autoSizingSelect" name="idDocumento">
+                    <select class="form-select" id="autoSizingSelect" name="nombreDocumento">
                         <option selected>seleccionar</option>
                         <option value="1">cedula de ciudadania</option>
                         <option value="2">cedula de extranjeria</option>
