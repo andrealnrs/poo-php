@@ -2,13 +2,13 @@
 declare(strict_types=1);
 
 class TipoDocumento {
-    public $id_documento = integer;
-    public $nombre_documento = string;
+    public $id_documento;
+    public $nombre_documento;
 
-    function __construc($_POST)
+    function __construc($post)
     {
-        $this->id=$_POST['idDocumento'];
-        $this->nombre_documento=$_POST['nombreDocumento'];
+        $this->id=$post["idDocumento"];
+        $this->nombre_documento=$post["nombreDocumento"];
+        
     }
-
 }

@@ -21,7 +21,7 @@
             </div>
             <div class='card-body'>
                 <div class="col-auto">
-                    <input type="hidden" name="idDocumento">
+                    <input type="hidden" name="Documento">
                 </div>
                 <div class="col-4">
                     <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>

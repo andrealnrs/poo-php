@@ -5,11 +5,11 @@ function llamadoAjax() {
     //definir el objeto ajax
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
         http_request = new XMLHttpRequest();
+        http_request.overrideMimeType('text/xml');
     } else if (window.ActiveXObject) { // IE
         http_request = new ActiveXObject("Microsoft.XMLHTTP");
     } 
 
-    //http_request.overrideMimeType('text/xml');
 
     //definir funcion de respuesta del servidor
     http_request.onreadystatechange = function(){
@@ -34,6 +34,6 @@ function llamadoAjax() {
     //var data2 = `numeroA=${document.querySelector('input[name="numeroA"]').value}&numeroB=${document.querySelector('input[name="numeroB"]').value}&operacion=${document.querySelector('select[name="operacion"]').value}`;
     //console.log(data2);
     //crear la peticion
-    http_request.open("POST", 'http://localhost/src/controller/Controlador.php', true);
+    http_request.open("POST", 'http://localhost/poo/src/controller/Controlador.php', true);
     http_request.send(data);
 }
