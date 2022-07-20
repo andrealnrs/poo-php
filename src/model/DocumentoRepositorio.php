@@ -13,7 +13,7 @@ class DocumentoRepositorio{
         $this->doc = $doc;
     }  
 
-    function guardar($doc)
+    function guardar($doc) : bool
     {
         $guardo = false;
         try{
@@ -23,12 +23,28 @@ class DocumentoRepositorio{
             //$sentencia->bindParam(':idDocumento', $doc->id_documento);
             $sentencia->bindParam(':nombreDocumento', $doc->nombre_documento);  
             $sentencia->execute();   
-            $guardo =  $sentencia->rowCount();
+            $guardo =  boolval ($sentencia->rowCount()); //ese entero lo estoy convirtiendo cast en booleano
             return  $guardo;   
-        }catch(Exception $e){
-            echo '<pre>'.print_r($e,true) .'</pre>';
+        } catch(Exception $e){
             return  $guardo; 
-            //die();            
         }
     }
+    
+    
+    function obtenerTodo()
+    {
+        $resultados = [];
+        try{
+            $sql = "SELECT * FROM formulario.documentos";
+            $sentencia = $this->bd->prepare($sql);  
+            $sentencia->execute();   
+            $resultados =  $sentencia->fetchAll(PDO::FETCH_ASSOC); //es un arreglo de registros de base de datos
+            return  $resultados;   
+        }catch(Exception $e){
+            echo '<pre>'.print_r($e,true) .'</pre>';
+            return  $resultados; 
+            //die();            
+        }        
+    }
+
 }
