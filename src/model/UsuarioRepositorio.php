@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-
+include_once('../model/Errores.php');
 include_once('db.php');
 include_once('Usuario.php');
 
