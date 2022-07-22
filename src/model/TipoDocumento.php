@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+include_once('../model/Errores.php');
 
 class TipoDocumento {
-    public $id_documento;
+    public $id;
     public $nombre_documento;
 
     function __construct($post)
