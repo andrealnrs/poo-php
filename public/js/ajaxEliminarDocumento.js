@@ -7,10 +7,10 @@ if (window.XMLHttpRequest) { // Mozilla, Safari, ...
 requestConsultaEliminar.onreadystatechange = resultadoConsultaEliminar;
 
 function activarBotonesEliminar(){
-    let botonesEliminar = document.querySelectorAll(".eliminar-documento");
+    let botonesEditar = document.querySelectorAll(".eliminar-documento");
 
-    for (let i = 0; i < botonesEliminar.length; i++) {
-        botonesEliminar[i].addEventListener("click", eliminarRegistro);
+    for (let i = 0; i < botonesEditar.length; i++) {
+            botonesEditar[i].addEventListener("click", eliminarRegistro);
     }
 }
 

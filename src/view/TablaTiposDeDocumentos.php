@@ -34,5 +34,3 @@ class TablaTiposDeDocumentos{
         return $html;
     }
 } 
-
-                //
