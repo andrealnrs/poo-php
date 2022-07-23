@@ -1,16 +1,17 @@
+
 if (window.XMLHttpRequest) { // Mozilla, Safari, ...
     requestConsultaEliminar = new XMLHttpRequest();
 } else if (window.ActiveXObject) { // IE
     requestConsultaEliminar = new ActiveXObject("Microsoft.XMLHTTP");
-} 
+}
 
 requestConsultaEliminar.onreadystatechange = resultadoConsultaEliminar;
 
 function activarBotonesEliminar(){
-    let botonesEditar = document.querySelectorAll(".eliminar-documento");
+    let botonesEliminar = document.querySelectorAll(".eliminar-documento");
 
-    for (let i = 0; i < botonesEditar.length; i++) {
-            botonesEditar[i].addEventListener("click", eliminarRegistro);
+    for (let i = 0; i < botonesEliminar.length; i++) {
+            botonesEliminar[i].addEventListener("click", eliminarRegistro);
     }
 }
 
@@ -35,18 +36,6 @@ function eliminarRegistro(){
         }
       })            
 }
-
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-});
 
 function resultadoConsultaEliminar(){
     // procesar la respuesta

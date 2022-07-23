@@ -4,7 +4,7 @@ function llenarTablaTipoDeDocumento(){
         tablaTipoDeDocumento = new XMLHttpRequest(); //crea un objeto AJAX de cualquier nombre
     } else if (window.ActiveXObject) { // IE
         tablaTipoDeDocumento = new ActiveXObject("Microsoft.XMLHTTP");
-    } 
+    };
      
     //enviar peticion POST al controlador
     tablaTipoDeDocumento.open('POST', 'http://localhost/poo/src/controller/ControladorTablaTipoDocumento.php', true);
@@ -15,6 +15,7 @@ function llenarTablaTipoDeDocumento(){
         // procesar la respuesta
         if (tablaTipoDeDocumento.status == 200) {
             document.getElementById("div_contenedorTabla").innerHTML = tablaTipoDeDocumento.responseText;
+            activarBotonesEditar();
             activarBotonesEliminar();
             // perfect!
         } else {
@@ -24,7 +25,7 @@ function llenarTablaTipoDeDocumento(){
             document.getElementById("div_contenedorTabla").innerHTML = "";
         }                        
 
-    };
+    }
 
 
 }

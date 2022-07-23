@@ -1,3 +1,16 @@
+//swal notificacion tipo toast
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
 document.getElementById("aggDocumento").addEventListener("click", llamadoAjax);
 
 //funcion que se ejecuta cuando se hace click
@@ -12,7 +25,8 @@ function llamadoAjax() {
 
 
     //definir funcion de respuesta del servidor
-    http_request.onreadystatechange = function(){
+    http_request.onreadystatechange = resultadoCrear;
+    /*(){
         // procesar la respuesta
         if (http_request.status == 200) {
             document.getElementById("resultado").innerHTML = http_request.responseText;
@@ -25,15 +39,39 @@ function llamadoAjax() {
             document.getElementById("resultado").innerHTML = "Algo salio mal!";
         }                        
 
-    };
+    };*/
 
     //enviar variables al servidor
     var form = document.querySelector('form');
     var data = new FormData(form);
-    //Prueba con variables separadas
-    //var data2 = `numeroA=${document.querySelector('input[name="numeroA"]').value}&numeroB=${document.querySelector('input[name="numeroB"]').value}&operacion=${document.querySelector('select[name="operacion"]').value}`;
-    //console.log(data2);
     //crear la peticion
     http_request.open("POST", 'http://localhost/poo/src/controller/ControladorGuardar.php', true);
     http_request.send(data);
+
+    function limpiarFormulario($id)
+{
+    document.getElementById($id).reset();
+}
+
+function resultadoCrear(){
+    // procesar la respuesta
+    if(http_request.readyState == 4){
+        if (http_request.status == 200) {
+            datos = JSON.parse(http_request.responseText);
+            Toast.fire({
+                icon: datos.icon,
+                title: datos.title
+            });                    
+            llenarTablaTipoDeDocumento();
+            limpiarFormulario('tabla');
+        } else if(http_request.status != 0) {
+            datos = JSON.parse(http_request.responseText);
+            Toast.fire({
+                icon: 'error',
+                title: "error consultando el registro"
+            });             
+            
+        }                        
+    }
+}
 }

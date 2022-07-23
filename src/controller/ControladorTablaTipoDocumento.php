@@ -1,7 +1,6 @@
 <?php
 include_once('../model/Errores.php');
 
-//require('../model/Calculadora.php');
 require('../model/DocumentoRepositorio.php');
 require('../view/TablaTiposDeDocumentos.php');
 

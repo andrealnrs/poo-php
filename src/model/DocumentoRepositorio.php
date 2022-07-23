@@ -12,8 +12,17 @@ class DocumentoRepositorio{
         $this->bd   = Conexion::obtener();
         $this->doc = $doc;
     }  
-
-    function guardar($doc) : bool
+    
+    function guardar($doc)
+    {
+        if($doc->id != null){
+            return $this->editar($doc);
+        }else{
+            return $this->crear($doc);
+        }
+    }
+    //me guarda en la base de datos
+    function crear($doc) : bool
     {
         $guardo = false;
         try{
@@ -30,7 +39,7 @@ class DocumentoRepositorio{
         }
     }
     
-    
+    //me llena el select de usuarios
     function obtenerTodo()
     {
         $resultados = [];
@@ -46,7 +55,7 @@ class DocumentoRepositorio{
             //die();            
         }        
     }
-
+    //me llena la tabla
     function llenarTablaDocumento()
     {
         $llenarTabla = [];
@@ -62,9 +71,8 @@ class DocumentoRepositorio{
             //die();            
         }        
     }
-
-
-    //LOREN ANDREA ESTAS HACIENDO LO QUE EJECUTA ESTA FUNCIÓN
+   
+    //me elimina datos de la tabla
     function eliminar($id)
     {
         $guardo = false;
@@ -81,6 +89,40 @@ class DocumentoRepositorio{
             //die();            
         }        
     }    
-
+    //me edita la tabla
+    function editar($doc)
+    {
+        $guardo = false;
+        try{
+            $sql = "UPDATE formulario.documentos SET nombre_documento = :nombreDocumento WHERE id = :id;";
+            $editar = $this->bd->prepare($sql);
+            $editar->bindParam(':nombreDocumento', $doc->nombre_documento);
+            $editar->bindParam(':id', $doc->id);
+            $editar->execute();   
+            $guardo =  $editar->rowCount();
+            return  $guardo;   
+        }catch(Exception $e){
+            //echo '<pre>'.print_r($e,true) .'</pre>';
+            return  $guardo; 
+            //die();            
+        }
+    } 
+    //me obtiene los datos para editar por el id
+    function obtenerPorId($id)
+    {
+        $resultadosId = [];
+        try{
+            $sql = "SELECT * FROM formulario.documentos WHERE id = :id";
+            $editarId = $this->bd->prepare($sql);  
+            $editarId->bindParam(':id',$id);
+            $editarId->execute();   
+            $resultadosId =  $editarId->fetch(PDO::FETCH_ASSOC);
+            return  $resultadosId;   
+        }catch(Exception $e){
+            //echo '<pre>'.print_r($e,true) .'</pre>';
+            return  $resultadosId; 
+            //die();            
+        }        
+    } 
 
 }

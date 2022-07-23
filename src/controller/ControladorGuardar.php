@@ -10,8 +10,16 @@ $doc = new TipoDocumento($_POST); //pasa los parametros que vas a solicitar sola
 $DocumentoRepositorio = new DocumentoRepositorio();
 $guardarBD= $DocumentoRepositorio->guardar($doc);
  
+
 if($guardarBD){
-  echo "se registró el usuario";
-} else {
-    echo "algo ha fallado!";
-};
+  $mensajes = [
+      'icon'=>'success',
+      'title'=>'Registro guardado con exito, resultado: '.$doc->nombre_documento
+  ];
+}else{
+  $mensajes = [
+      'icon'=>'error',
+      'title'=>'No fue posible guardar el registro'
+  ];
+}
+echo json_encode($mensajes);

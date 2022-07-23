@@ -82,14 +82,15 @@
      </div>
     </form>
 
- <!--tabla de usuarios-->
+ <!--tabla de usuarios
   <?php
    include_once('../src/view/tabla.php');
    ?>
-  </div>
+  </div>-->
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
    <script src="./js/ajaxSelectTipoDocumento.js"></script>
+   <script src="./js/usuarioAjaxGuardar.js"></script>
 </body>
 
 </html>

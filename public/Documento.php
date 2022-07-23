@@ -15,18 +15,18 @@
 
 <body>
     
-    <form action='../src/controller/ControladorGuardar.php' method="POST">
+    <form id="tabla">
         <div class="card my-3 mx-3">
             <div class='card-header text-danger'>
               TIPO DE DOCUMENTO
             </div>
             <div class='card-body'>
                 <div class="col-auto">
-                    <input type="hidden" name="Documento">
+                    <input type="hidden" name="Documento" id="id">
                 </div>
                 <div class="col-4">
-                    <label for="formGroupExampleInput2" class="form-label">Tipo de documento</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                    <label for="nombreDocumento" class="form-label">Tipo de documento</label>
+                    <input type="text" class="form-control" id="nombreDocumento"
                     placeholder="inserte tipo de documento" name="nombreDocumento">
                 </div>
                 <div class="col-auto my-3">
@@ -53,9 +53,10 @@
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
-   <script src="./js/ajaxllenarTablaTipoDeDocumento.js"></script>
-   <script src="./js/ajaxTipoDocumento.js"></script>
-   <script src="./js/ajaxEliminarDocumento.js"></script>
+    <script src="./js/ajaxllenarTablaTipoDeDocumento.js"></script>
+    <script src="./js/ajaxTipoDocumento.js"></script>
+    <script src="./js/ajaxEliminarDocumento.js"></script>
+    <script src="./js/ajaxEditarDocumento.js"></script>
 </body>
 
 </html>
