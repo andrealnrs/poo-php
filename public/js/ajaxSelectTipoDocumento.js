@@ -13,13 +13,13 @@ function llenarSelectTipoDeDocumento(){
     requestSelectTipoDeDocumento.onreadystatechange = function(){
         // procesar la respuesta
         if (requestSelectTipoDeDocumento.status == 200) {
-            document.getElementById("selectDocumento").innerHTML = requestSelectTipoDeDocumento.responseText;
+            document.getElementById("id_documento").innerHTML = requestSelectTipoDeDocumento.responseText;
             // perfect!
         } else {
             // hubo algún problema con la petición,
             // por ejemplo código de respuesta 404 (Archivo no encontrado)
             // o 500 (Internal Server Error)
-            document.getElementById("selectDocumento").innerHTML = "";
+            document.getElementById("id_documento").innerHTML = "";
         }                        
 
     };

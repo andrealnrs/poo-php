@@ -1,4 +1,3 @@
-
 if (window.XMLHttpRequest) { // Mozilla, Safari, ...
     requestConsultaEditar = new XMLHttpRequest();
 } else if (window.ActiveXObject) { // IE

@@ -4,7 +4,8 @@ include_once('../model/Errores.php');
 
 class Usuario 
 {
-    public $id_documento;   
+    public $id; 
+    public $id_documento;  
     public $documento;  
     public $primer_nombre;   
     public $segundo_nombre; 
@@ -16,13 +17,13 @@ class Usuario
     function __construct($post)
     {
         //En mi metodo constructor como parametro puse POST 
-        $this->id_documento=$post['idDocumento'];
-        $this->documento=$post['documento'];
-        $this->primer_nombre=$post['primerNombre'];
-        $this->segundo_nombre=$post['segundoNombre'];
-        $this->primer_apellido=$post['primerApellido'];
-        $this->segudo_apellido=$post['segundoApellido'];
-        $this->email=$post['email'];
-        //var_dump($post);
+        $this->id=$post["id"];
+        $this->id_documento=$post["id_documento"];
+        $this->documento=$post["documento"];
+        $this->primer_nombre=$post["primerNombre"];
+        $this->segundo_nombre=$post["segundoNombre"];
+        $this->primer_apellido=$post["primerApellido"];
+        $this->segudo_apellido=$post["segundoApellido"];
+        $this->email=$post["email"];
     }
 }
